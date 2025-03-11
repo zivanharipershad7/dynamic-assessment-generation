@@ -51,10 +51,15 @@ jobs:
           rsync -av --ignore-existing /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation/ .
           rm -rf /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation
 
+      - name: Debug Working Directory
+        run: |
+          echo "Current working directory: $(pwd)"
+          ls -la
+
       - name: Update README
         run: |
           # Append the current date and time to the README file
-          echo "Last updated: $(date '+%Y-%m-%d %H:%M:%S')" >> ./README.md
+          echo "Last updated: $(date '+%Y-%m-%d %H:%M:%S')" >> README.md
 
       - name: Commit and push changes
         run: |
