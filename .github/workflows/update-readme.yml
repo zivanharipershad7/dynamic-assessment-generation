@@ -38,55 +38,24 @@ jobs:
           HOME: /home/runner
         run: |
           source "$HOME/.sdkman/bin/sdkman-init.sh"
-          spring init --dependencies=web,data-jpa,h2 --build=maven --java-version=17 --name=dynamic-assessment-generation --package-name=com.example.dynamicassessmentgeneration --force --extract
-          ls -la /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation
-          ls -la /home/runner/work/dynamic-assessment-generation
-
-      - name: Debug Working Directory Before Move
-        run: |
-          echo "Current working directory before move: $(pwd)"
-          ls -la
+          spring init --dependencies=web,data-jpa,h2 --build=maven --java-version=17 --name=dynamic-assessment-generation --package-name=com.example.dynamicassessmentgeneration --force --extract --dir $GITHUB_WORKSPACE
+          ls -la $GITHUB_WORKSPACE
 
       - name: Restore README
         run: |
           mv README.md.bak README.md
 
-      - name: Debug Directory Structure Before Move
+      - name: Debug Directory Structure
         run: |
-          echo "Current working directory before move: $(pwd)"
-          ls -la
-
-      - name: Move Project Files
-        run: |
-          rsync -av --ignore-existing /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation/ /home/runner/work/dynamic-assessment-generation/
-          rm -rf /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation
-
-      - name: Debug Directory Structure After Move
-        run: |
-          echo "Directory structure after move:"
-          ls -la /home/runner/work/dynamic-assessment-generation/
-
-      - name: Change to Root Directory
-        run: |
-          echo "Changing to root directory"
-          cd /home/runner/work/dynamic-assessment-generation/
-          echo "Changed to root directory: $(pwd)"
-          ls -la
-
-      - name: Debug Working Directory
-        working-directory: /home/runner/work/dynamic-assessment-generation/
-        run: |
-          echo "Current working directory: $(pwd)"
-          ls -la
+          echo "Directory structure:"
+          ls -la $GITHUB_WORKSPACE
 
       - name: Update README
-        working-directory: /home/runner/work/dynamic-assessment-generation/
         run: |
           # Append the current date and time to the README file
           echo "Last updated: $(date '+%Y-%m-%d %H:%M:%S')" >> README.md
 
       - name: Commit and push changes
-        working-directory: /home/runner/work/dynamic-assessment-generation/
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
