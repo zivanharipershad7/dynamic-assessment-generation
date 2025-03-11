@@ -57,6 +57,10 @@ jobs:
           ls -la /home/runner/work/dynamic-assessment-generation
 
       - name: Move Project Files
+        env:
+          GITHUB_WORKSPACE: .
+        working-directory: 
+          $GITHUB_WORKSPACE
         run: |
           rsync -av --ignore-existing /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation/ $GITHUB_WORKSPACE/
           rm -rf /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation
