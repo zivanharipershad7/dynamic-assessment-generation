@@ -56,20 +56,25 @@ jobs:
           echo "Current working directory before move: $(pwd)"
           ls -la
 
+      - name: Print GITHUB_WORKSPACE
+        run: |
+          echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+          ls -la $GITHUB_WORKSPACE
+
       - name: Move Project Files
         run: |
-          rsync -av --ignore-existing /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation/ ${{ github.workspace }}/
+          rsync -av --ignore-existing /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation/ $GITHUB_WORKSPACE/
           rm -rf /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation
 
       - name: Debug Directory Structure After Move
         run: |
           echo "Directory structure after move:"
-          ls -la ${{ github.workspace }}
+          ls -la $GITHUB_WORKSPACE
 
       - name: Change to Root Directory
         run: |
           echo "Changing to root directory"
-          cd ${{ github.workspace }}
+          cd $GITHUB_WORKSPACE
           echo "Changed to root directory: $(pwd)"
           ls -la
 
