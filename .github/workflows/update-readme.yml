@@ -51,15 +51,14 @@ jobs:
         run: |
           mv README.md.bak README.md
 
-      - name: Debug Working Directory
-        run: |
-          echo "Current working directory: $(pwd)"
-          ls -la
-
       - name: Move Project Files
         run: |
           rsync -av --ignore-existing /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation/ .
           rm -rf /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation
+
+      - name: Change to Root Directory
+        run: |
+          cd $GITHUB_WORKSPACE
 
       - name: Debug Working Directory
         run: |
