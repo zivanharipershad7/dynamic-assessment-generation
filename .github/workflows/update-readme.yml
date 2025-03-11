@@ -61,14 +61,14 @@ jobs:
           rsync -av --ignore-existing /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation/ ./
           rm -rf /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation
 
+      - name: Set Working Directory to Root
+        run: |
+          cd ./
+
       - name: Debug Directory Structure After Move
         run: |
           echo "Directory structure after move:"
           ls -la ./
-
-      - name: Set Working Directory to Root
-        run: |
-          cd ./
 
       - name: Debug Working Directory After Move
         run: |
