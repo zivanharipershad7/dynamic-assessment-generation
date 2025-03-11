@@ -47,9 +47,8 @@ jobs:
 
       - name: Move Project Files
         run: |
-          mv /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation/* .
-          mv /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation/.* .
-          rmdir /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation
+          rsync -av --ignore-existing /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation/ .
+          rm -rf /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation
 
       - name: Update README
         run: |
