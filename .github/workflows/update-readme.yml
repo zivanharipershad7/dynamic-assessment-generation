@@ -54,7 +54,7 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: |
           # Append the current date and time to the README file
-          echo "Last updated: $(date)" >> README.md
+          echo "Last updated: $(date)" >> ${{ github.workspace }}/README.md
 
       - name: Commit and push changes
         run: |
