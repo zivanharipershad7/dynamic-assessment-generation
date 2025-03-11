@@ -1,4 +1,4 @@
-name: Update README
+name: Update README and Create Spring Boot Project Structure
 
 on:
   push:
@@ -21,6 +21,16 @@ jobs:
         with:
           node-version: '14'
 
+      - name: Install Spring CLI
+        run: |
+          curl -s "https://get.sdkman.io" | bash
+          source "$HOME/.sdkman/bin/sdkman-init.sh"
+          sdk install springboot
+
+      - name: Create Spring Boot Project Structure
+        run: |
+          spring init --dependencies=web,data-jpa,h2 --build=maven --java-version=11 --name=dynamic-assessment-generation --package-name=com.example.dynamicassessmentgeneration
+
       - name: Update README
         run: |
           # Append the current date and time to the README file
@@ -30,6 +40,6 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add README.md
-          git commit -m "Update README with the current date and time"
+          git add .
+          git commit -m "Update README and create Spring Boot project structure"
           git push
