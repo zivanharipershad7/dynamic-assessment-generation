@@ -53,13 +53,8 @@ jobs:
 
       - name: Move Project Files
         run: |
-          rsync -av --ignore-existing /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation/ .
+          rsync -av --ignore-existing /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation/ $GITHUB_WORKSPACE
           rm -rf /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation
-
-      - name: Debug Working Directory After Move
-        run: |
-          echo "Current working directory after move: $(pwd)"
-          ls -la
 
       - name: Change to Root Directory
         run: |
