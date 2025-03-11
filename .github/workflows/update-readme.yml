@@ -39,8 +39,8 @@ jobs:
         run: |
           source "$HOME/.sdkman/bin/sdkman-init.sh"
           spring init --dependencies=web,data-jpa,h2 --build=maven --java-version=17 --name=dynamic-assessment-generation --package-name=com.example.dynamicassessmentgeneration --force --extract
-          ls -la /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation
-          ls -la
+          unzip dynamic-assessment-generation.zip -d dynamic-assessment-generation
+          ls -la dynamic-assessment-generation
 
       - name: Restore README
         run: |
@@ -48,17 +48,15 @@ jobs:
 
       - name: Move Project Files
         run: |
-          rsync -av --ignore-existing /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation/ .
-          rm -rf /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation
+          rsync -av --ignore-existing dynamic-assessment-generation/ .
+          rm -rf dynamic-assessment-generation
 
       - name: Update README
-        working-directory: ${{ github.workspace }}
         run: |
           # Append the current date and time to the README file
           echo "Last updated: $(date)" >> README.md
 
       - name: Commit and push changes
-        working-directory: ${{ github.workspace }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
