@@ -59,5 +59,4 @@ dynamic-assessment-generation
 Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details.Last updated: Tue Mar 11 15:26:00 UTC 2025
-Last updated: Tue Mar 11 15:29:54 UTC 2025
+This project is licensed under the MIT License. See the LICENSE file for details.
