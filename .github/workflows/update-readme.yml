@@ -22,13 +22,16 @@ jobs:
           node-version: '14'
 
       - name: Install SDKMAN and Spring CLI
+        env:
+          HOME: /home/runner
         run: |
           curl -s "https://get.sdkman.io" | bash
           source "$HOME/.sdkman/bin/sdkman-init.sh"
           sdk install springboot
-          echo "source $HOME/.sdkman/bin/sdkman-init.sh" >> $GITHUB_ENV
 
       - name: Create Spring Boot Project Structure
+        env:
+          HOME: /home/runner
         run: |
           source "$HOME/.sdkman/bin/sdkman-init.sh"
           spring init --dependencies=web,data-jpa,h2 --build=maven --java-version=17 --name=dynamic-assessment-generation --package-name=com.example.dynamicassessmentgeneration
