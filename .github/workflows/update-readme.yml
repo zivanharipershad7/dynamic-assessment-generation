@@ -39,7 +39,6 @@ jobs:
         run: |
           source "$HOME/.sdkman/bin/sdkman-init.sh"
           spring init --dependencies=web,data-jpa,h2 --build=maven --java-version=17 --name=dynamic-assessment-generation --package-name=com.example.dynamicassessmentgeneration --force --extract
-          unzip dynamic-assessment-generation.zip -d dynamic-assessment-generation
           ls -la dynamic-assessment-generation
 
       - name: Restore README
