@@ -40,6 +40,11 @@ jobs:
           source "$HOME/.sdkman/bin/sdkman-init.sh"
           spring init --dependencies=web,data-jpa,h2 --build=maven --java-version=17 --name=dynamic-assessment-generation --package-name=com.example.dynamicassessmentgeneration --force --extract
           ls -la /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation
+          ls -la /home/runner/work/dynamic-assessment-generation
+
+      - name: Debug Working Directory
+        run: |
+          echo "Current working directory: $(pwd)"
           ls -la
 
       - name: Restore README
@@ -50,11 +55,6 @@ jobs:
         run: |
           rsync -av --ignore-existing /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation/ .
           rm -rf /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation
-
-      - name: Debug Working Directory
-        run: |
-          echo "Current working directory: $(pwd)"
-          ls -la
 
       - name: Update README
         run: |
