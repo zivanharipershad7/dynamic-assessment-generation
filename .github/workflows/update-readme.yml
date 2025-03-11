@@ -38,7 +38,8 @@ jobs:
           HOME: /home/runner
         run: |
           source "$HOME/.sdkman/bin/sdkman-init.sh"
-          spring init --dependencies=web,data-jpa,h2 --build=maven --java-version=17 --name=dynamic-assessment-generation --package-name=com.example.dynamicassessmentgeneration --force --extract --dir $GITHUB_WORKSPACE
+          cd $GITHUB_WORKSPACE
+          spring init --dependencies=web,data-jpa,h2 --build=maven --java-version=17 --name=dynamic-assessment-generation --package-name=com.example.dynamicassessmentgeneration --force --extract
           ls -la $GITHUB_WORKSPACE
 
       - name: Restore README
