@@ -39,7 +39,7 @@ jobs:
         run: |
           source "$HOME/.sdkman/bin/sdkman-init.sh"
           spring init --dependencies=web,data-jpa,h2 --build=maven --java-version=17 --name=dynamic-assessment-generation --package-name=com.example.dynamicassessmentgeneration --force --extract
-          ls -la dynamic-assessment-generation
+          ls -la /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation
 
       - name: Restore README
         run: |
@@ -47,9 +47,9 @@ jobs:
 
       - name: Move Project Files
         run: |
-          mv dynamic-assessment-generation/* .
-          mv dynamic-assessment-generation/.* .
-          rmdir dynamic-assessment-generation
+          mv /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation/* .
+          mv /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation/.* .
+          rmdir /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation
 
       - name: Update README
         run: |
