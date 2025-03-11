@@ -57,25 +57,23 @@ jobs:
           rm -rf /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation
 
       - name: Change to Root Directory
-        shell: bash
         run: |
           echo "Changing to root directory"
           cd $GITHUB_WORKSPACE
+          echo "Changed to root directory: $(pwd)"
+          ls -la
 
       - name: Debug Working Directory
-        shell: bash
         run: |
           echo "Current working directory: $(pwd)"
           ls -la
 
       - name: Update README
-        shell: bash
         run: |
           # Append the current date and time to the README file
           echo "Last updated: $(date '+%Y-%m-%d %H:%M:%S')" >> README.md
 
       - name: Commit and push changes
-        shell: bash
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
