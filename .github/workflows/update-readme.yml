@@ -51,10 +51,20 @@ jobs:
         run: |
           mv README.md.bak README.md
 
+      - name: Debug Directory Structure Before Move
+        run: |
+          echo "Directory structure before move:"
+          ls -la /home/runner/work/dynamic-assessment-generation
+
       - name: Move Project Files
         run: |
           rsync -av --ignore-existing /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation/ ${{ github.workspace }}
           rm -rf /home/runner/work/dynamic-assessment-generation/dynamic-assessment-generation
+
+      - name: Debug Directory Structure After Move
+        run: |
+          echo "Directory structure after move:"
+          ls -la ${{ github.workspace }}
 
       - name: Set Working Directory to Root
         run: |
