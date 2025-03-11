@@ -34,7 +34,7 @@ jobs:
           HOME: /home/runner
         run: |
           source "$HOME/.sdkman/bin/sdkman-init.sh"
-          spring init --dependencies=web,data-jpa,h2 --build=maven --java-version=17 --name=dynamic-assessment-generation --package-name=com.example.dynamicassessmentgeneration
+          spring init --dependencies=web,data-jpa,h2 --build=maven --java-version=17 --name=dynamic-assessment-generation --package-name=com.example.dynamicassessmentgeneration --extract
           ls -la dynamic-assessment-generation
 
       - name: Move Project Files
