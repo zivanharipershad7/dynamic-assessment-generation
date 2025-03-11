@@ -6,5 +6,7 @@ public class DynamicAssessmentGenerationApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DynamicAssessmentGenerationApplication.class, args);
+
+        System.out.println("Hello World");
     }
 }
