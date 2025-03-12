@@ -32,7 +32,7 @@ jobs:
 
       - name: Create Spring Boot Project Structure
         run: |
-          mvn archetype:generate -DgroupId=za.co.dvt -DartifactId=dynamic-assessment-generation -DarchetypeGroupId=org.springframework.boot -DarchetypeArtifactId=spring-boot-sample-simple-archetype -DarchetypeVersion=2.5.4 -DinteractiveMode=false
+          mvn archetype:generate -DgroupId=com.example -DartifactId=dynamic-assessment-generation -DarchetypeGroupId=org.springframework.boot -DarchetypeArtifactId=spring-boot-archetype -DarchetypeVersion=2.5.4 -DinteractiveMode=false
           ls -la $GITHUB_WORKSPACE
 
       - name: Restore README
