@@ -21,25 +21,18 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install SDKMAN and Spring CLI
-        env:
-          HOME: /home/runner
+      - name: Install Maven
         run: |
-          curl -s "https://get.sdkman.io" | bash
-          source "$HOME/.sdkman/bin/sdkman-init.sh"
-          sdk install springboot
+          sudo apt-get update
+          sudo apt-get install -y maven
 
       - name: Backup README
         run: |
           mv README.md README.md.bak
 
       - name: Create Spring Boot Project Structure
-        env:
-          HOME: /home/runner
         run: |
-          source "$HOME/.sdkman/bin/sdkman-init.sh"
-          cd $GITHUB_WORKSPACE
-          spring init --dependencies=web,data-jpa,h2 --build=maven --java-version=17 --name=dynamic-assessment-generation --package-name=com.example.dynamicassessmentgeneration --force --extract
+          mvn archetype:generate -DgroupId=za.co.dvt -DartifactId=dynamic-assessment-generation -DarchetypeGroupId=za.co.dvt -DarchetypeVersion=1.0-SNAPSHOT -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
           ls -la $GITHUB_WORKSPACE
 
       - name: Restore README
